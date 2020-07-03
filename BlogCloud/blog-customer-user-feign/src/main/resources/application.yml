@@ -1,0 +1,49 @@
+server:
+  port: 8014
+spring:
+  application:
+    name: blog-customer-user
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    url: jdbc:mysql://127.0.0.1/blog?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: 
+    password: 
+    driver-class-name: com.mysql.jdbc.Driver
+  zipkin:
+    base-url: http://blog-zipkin-es/
+  sleuth:
+    sampler:
+      percentage: 1.0
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+   prefer-ip-address: true #表示将自己的ip注册到Eureka Server上，若不配置或设置成false，表示注册微服务所在的操作系统的hostname到Server上
+
+mybatis:
+  mapper-locations: classpath*:com/mapper/**/*mapper.xml
+  type-aliases-package: com.Entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    com:
+      scorpios:
+        cache:
+          mapper=debug: debug
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: blog-customer-user,blog-provider-user,blog-provider-user-article,blog-provider-user-es,blog-zipkin-es,blog-provider-user-message

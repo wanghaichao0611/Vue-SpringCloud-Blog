@@ -1,0 +1,23 @@
+server:
+  port: 8051
+spring:
+  application:
+    name: blog-getway-zuul-two
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+zuul:
+  host:
+    socket-timeout-millis: 10000
+    connect-timeout-millis: 2000
+  routes:
+    user-route:
+      url: http://localhost:8088/
+      path: /user/**
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: blog-customer-user,blog-provider-user,blog-provider-user-article,blog-provider-user-es,blog-zipkin-es

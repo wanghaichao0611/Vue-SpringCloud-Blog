@@ -1,0 +1,26 @@
+server:
+  port: 9000
+zipkin:
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      hosts: http://localhost:9200
+      cluster: elasticsearch
+      index: zipkin
+      index-shards: 5
+      index-replicas: 1
+spring:
+  application:
+    name: blog-zipkin-es
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+    prefer-ip-address: true
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: blog-zipkin-es

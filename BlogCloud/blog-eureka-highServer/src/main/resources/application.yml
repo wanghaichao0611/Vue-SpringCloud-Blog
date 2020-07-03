@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: blog-eureka-highServer
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+security:
+  basic:
+    enabled: true
+  user:
+    name: whc
+    password: 123
+--- #分开Profile，未指定则对所有Profile生效。
+spring:
+  profiles: EurekaServerOne  #EurekaServerOne 节点1
+server:
+  port: 8010
+eureka:
+  instance:
+    hostname: EurekaServerOne
+---
+spring:
+  profiles: EurekaServerTwo  #EurekaServerTwo 节点2
+server:
+  port: 8011
+eureka:
+  instance:
+    hostname: EurekaServerTwo

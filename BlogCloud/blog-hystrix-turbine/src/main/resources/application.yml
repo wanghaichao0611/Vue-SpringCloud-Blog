@@ -1,0 +1,20 @@
+server:
+  port: 8070
+spring:
+  application:
+    name: blog-hystrix-turbine
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+    prefer-ip-address: true
+      # 务必跟server.port的配置保持一致
+    non-secure-port: 8070
+

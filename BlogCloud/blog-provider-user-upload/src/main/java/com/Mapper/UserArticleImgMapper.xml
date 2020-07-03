@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Mapper.UserArticleImgMapper">
+  <resultMap id="BaseResultMap" type="com.Entity.UserArticleImg">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="article_author__id" jdbcType="BIGINT" property="articleAuthorId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="blogImg_name" jdbcType="VARCHAR" property="blogimgName" />
+    <result column="blogImg_url" jdbcType="VARCHAR" property="blogimgUrl" />
+    <result column="blogImgCreateTime" jdbcType="TIMESTAMP" property="blogimgcreatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, article_author__id, username, blogImg_name, blogImg_url, blogImgCreateTime
+  </sql>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.Entity.UserArticleImg" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user_article_img (article_author__id, username, blogImg_name, 
+      blogImg_url, blogImgCreateTime)
+    values (#{articleAuthorId,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{blogimgName,jdbcType=VARCHAR}, 
+      #{blogimgUrl,jdbcType=VARCHAR}, #{blogimgcreatetime,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>

@@ -1,0 +1,20 @@
+server:
+  port: 8060
+spring:
+  application:
+    name: blog-hystrix-dashboard
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+    prefer-ip-address: true   #表示将自己的ip注册到Eureka Server上，若不配置或设置成false，表示注册微服务所在的操作系统的hostname到Server上
+
+#暴露全部的监控信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

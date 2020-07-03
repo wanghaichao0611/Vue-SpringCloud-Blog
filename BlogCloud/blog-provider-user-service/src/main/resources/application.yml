@@ -1,0 +1,54 @@
+server:
+  port: 8020
+
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+    prefer-ip-address: true
+
+
+spring:
+  zipkin:
+    base-url: http://blog-zipkin-es/
+  sleuth:
+    sampler:
+      percentage: 1.0
+  datasource:
+    url: jdbc:mysql://127.0.0.1/blog?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: #mysql账号
+    password: #mysql密码
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    druid:
+      initialSize: 1
+      minIdle: 5
+      maxActive: 50
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      #这个项目的名字
+  application:
+    name: blog-provider-user-service
+  # REDIS (RedisProperties)
+  # Redis数据库索引（默认为0）
+  redis:
+    host: localhost
+    port: 6379
+
+
+mybatis:
+  mapper-locations: classpath*:com/service/Mapper/**/*mapper.xml
+  type-aliases-package: com.service.Entity

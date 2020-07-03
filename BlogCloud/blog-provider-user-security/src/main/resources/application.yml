@@ -1,0 +1,87 @@
+server:
+  port: 8013
+spring:
+  application:
+    name: blog-provider-user-security
+  zipkin:
+    base-url: http://blog-zipkin-es/
+  sleuth:
+    sampler:
+      percentage: 1.0
+  mail:
+    host: smtp.qq.com
+    port: 587
+    protocol: smtp
+    username: #QQ邮箱账号
+    password: #SMTP密码
+    default-encoding: UTF-8
+    properties:
+      mail:
+       smtp:
+        socketFactory:
+         class: javax.net.ssl.SSLSocketFactory
+        auth: false
+        ssl:
+         enable: false
+       debug: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1/blog?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: #mysql账号
+    password: #mysql密码
+    driver-class-name: com.mysql.jdbc.Driver
+    platform: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    druid:
+      initialSize: 1
+      minIdle: 5
+      maxActive: 50
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+    # REDIS (RedisProperties)
+    # Redis数据库索引（默认为0）
+  redis:
+    database: 0
+    timeout: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password:
+    # 连接池最大连接数（使用负值表示没有限制）
+    pool:
+      max-active: 8
+      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      # 连接池中的最大空闲连接
+      max-idle: 8
+      # 连接池中的最小空闲连接
+      min-idle: 0
+    cluster:
+      max-redirects: 10
+      nodes: 127.0.0.1:6080
+eureka:
+  client:
+    serviceUrl:
+      #defaultZone: http://localhost:8761/eureka/  #设置与Eureka Server的交互地址，查询服务和注册服务都需要这个地址，多个地址可分隔使用.
+      defaultZone: http://whc:123@EurekaServerTwo:8011/eureka/,http://whc:123@EurekaServerOne:8010/eureka/  #最好是两者都注册
+  instance:
+    prefer-ip-address: true
+
+mybatis:
+  mapper-locations: classpath*:com/whc/cloud/Mapper/**/*mapper.xml
+  type-aliases-package: com.whc.cloud.User
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

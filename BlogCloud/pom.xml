@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.whc.cloud</groupId>
+    <artifactId>blog</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>blog-eureka-server</module>
+        <module>blog-provider-user</module>
+        <module>blog-getway-zuul</module>
+        <module>blog-getway-zuul-two</module>
+        <module>blog-customer-user-feign</module>
+        <module>blog-provider-user-security</module>
+        <module>blog-hystrix-dashboard</module>
+        <module>blog-hystrix-turbine</module>
+        <module>blog-eureka-highServer</module>
+        <module>blog-provider-user-upload</module>
+        <module>blog-provider-user-sign</module>
+        <module>blog-provider-user-article</module>
+        <module>blog-provider-user-pay</module>
+        <module>blog-provider-user-message</module>
+        <module>blog-provider-user-service</module>
+        <module>blog-provider-user-es</module>
+        <module>blog-provider-user-member</module>
+        <module>blog-zipkin-stream-es</module>
+    </modules>
+
+</project>

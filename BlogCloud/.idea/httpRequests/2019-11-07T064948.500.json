@@ -1,0 +1,8 @@
+{
+  "timestamp": 1573123788023,
+  "status": 500,
+  "error": "Internal Server Error",
+  "exception": "feign.FeignException",
+  "message": "status 500 reading UserFeignClient#personAdd(UserIf); content:\n{\"timestamp\":1573123788018,\"status\":500,\"error\":\"Internal Server Error\",\"exception\":\"org.springframework.jdbc.BadSqlGrammarException\",\"message\":\"\\r\\n### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where 1=1' at line 3\\r\\n### The error may involve defaultParameterMap\\r\\n### The error occurred while setting parameters\\r\\n### SQL: update user_if            where 1=1\\r\\n### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where 1=1' at line 3\\n; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where 1=1' at line 3\",\"path\":\"/information\"}",
+  "path": "/personAdd"
+}

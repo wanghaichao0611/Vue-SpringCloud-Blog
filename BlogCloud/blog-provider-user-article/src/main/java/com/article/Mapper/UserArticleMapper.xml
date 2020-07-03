@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.article.Mapper.UserArticleMapper">
+  <resultMap id="BaseResultMap" type="com.article.Entity.UserArticle">
+    <!--@mbg.generated-->
+    <!--@Table user_article-->
+    <id column="article_id" jdbcType="BIGINT" property="id" />
+    <result column="article_author_id" jdbcType="BIGINT" property="articleAuthorId" />
+    <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+    <result column="article_summary" jdbcType="VARCHAR" property="articleSummary" />
+    <result column="article_md_content" jdbcType="LONGVARCHAR" property="articleMdContent" />
+    <result column="article_tags_id" jdbcType="VARCHAR" property="articleTagsId" />
+    <result column="article_category_id" jdbcType="BIGINT" property="articleCategoryId" />
+    <result column="article_reading" jdbcType="INTEGER" property="articleReading" />
+    <result column="article_thumb_up" jdbcType="INTEGER" property="articleThumbUp" />
+    <result column="article_comment" jdbcType="INTEGER" property="articleComment" />
+    <result column="article_collection" jdbcType="INTEGER" property="articleCollection" />
+    <result column="article_forward" jdbcType="INTEGER" property="articleForward" />
+    <result column="article_is_public" jdbcType="BOOLEAN" property="articleIsPublic" />
+    <result column="article_is_private" jdbcType="BOOLEAN" property="articleIsPrivate" />
+    <result column="article_is_vip" jdbcType="BOOLEAN" property="articleIsVip" />
+    <result column="article_is_original" jdbcType="BOOLEAN" property="articleIsOriginal" />
+    <result column="article_is_forward" jdbcType="BOOLEAN" property="articleIsForward" />
+    <result column="article_is_translate" jdbcType="BOOLEAN" property="articleIsTranslate" />
+    <result column="article_forward_url" jdbcType="LONGVARCHAR" property="articleForwardUrl" />
+    <result column="article_translate_url" jdbcType="LONGVARCHAR" property="articleTranslateUrl" />
+    <result column="article_examine" jdbcType="BOOLEAN" property="articleExamine" />
+    <result column="article_publish_date" jdbcType="TIMESTAMP" property="articlePublishDate" />
+    <result column="article_update_date" jdbcType="TIMESTAMP" property="articleUpdateDate" />
+  </resultMap>
+
+  <resultMap id="totalMap" type="com.article.response.UserArticleCountAll">
+    <result column="originalTotal" jdbcType="INTEGER" property="originalTotal"/>
+    <result column="thumpTotal" jdbcType="INTEGER" property="thumpTotal"/>
+    <result column="commentTotal" jdbcType="INTEGER" property="commentTotal"/>
+    <result column="readTotal" jdbcType="INTEGER" property="readTotal"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    article_id, article_author_id, article_title, article_summary, article_md_content,
+    article_tags_id, article_category_id, article_reading, article_thumb_up, article_comment,
+    article_collection, article_forward, article_is_public, article_is_private, article_is_vip,
+    article_is_original, article_is_forward, article_is_translate, article_forward_url,
+    article_translate_url, article_examine, article_publish_date, article_update_date
+  </sql>
+  <insert id="insert" parameterType="com.article.Entity.UserArticle">
+    <!--@mbg.generated-->
+    insert into user_article (article_id, article_author_id, article_title,
+    article_summary, article_md_content, article_tags_id,
+    article_category_id, article_reading, article_thumb_up,
+    article_comment, article_collection, article_forward,
+    article_is_public, article_is_private, article_is_vip,
+    article_is_original, article_is_forward, article_is_translate,
+    article_forward_url, article_translate_url,
+    article_examine, article_publish_date, article_update_date
+    )
+    values (#{id,jdbcType=BIGINT}, #{articleAuthorId,jdbcType=BIGINT}, #{articleTitle,jdbcType=VARCHAR},
+    #{articleSummary,jdbcType=VARCHAR}, #{articleMdContent,jdbcType=LONGVARCHAR}, #{articleTagsId,jdbcType=VARCHAR},
+    #{articleCategoryId,jdbcType=BIGINT}, #{articleReading,jdbcType=INTEGER}, #{articleThumbUp,jdbcType=INTEGER},
+    #{articleComment,jdbcType=INTEGER}, #{articleCollection,jdbcType=INTEGER}, #{articleForward,jdbcType=INTEGER},
+    #{articleIsPublic,jdbcType=BOOLEAN}, #{articleIsPrivate,jdbcType=BOOLEAN}, #{articleIsVip,jdbcType=BOOLEAN},
+    #{articleIsOriginal,jdbcType=BOOLEAN}, #{articleIsForward,jdbcType=BOOLEAN}, #{articleIsTranslate,jdbcType=BOOLEAN},
+    #{articleForwardUrl,jdbcType=LONGVARCHAR}, #{articleTranslateUrl,jdbcType=LONGVARCHAR},
+    #{articleExamine,jdbcType=BOOLEAN}, #{articlePublishDate,jdbcType=TIMESTAMP}, #{articleUpdateDate,jdbcType=TIMESTAMP}
+    );
+    <selectKey resultType="java.lang.Long" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+  </insert>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-20-->
+  <update id="updateArticleTagsIdByArticleId">
+    update user_article
+    set article_tags_id=#{updatedArticleTagsId,jdbcType=VARCHAR}
+    where 1=1
+    <if test="articleId != null">
+      and article_id=#{articleId,jdbcType=BIGINT}
+    </if>
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-21-->
+  <select id="selectAllByArticleAuthorId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_article
+    where 1=1
+    <if test="articleAuthorId != null">
+      and article_author_id=#{articleAuthorId,jdbcType=BIGINT}
+    </if>
+    order by article_publish_date desc
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-22-->
+  <select id="selectAllById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_article
+    where 1=1
+    <if test="id != null">
+      and article_id=#{id,jdbcType=BIGINT}
+    </if>
+  </select>
+
+  <!--auto generated by MybatisCodeHelper on 2020-02-22-->
+  <select id="selectListAllById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_article
+    where 1=1
+    <if test="id != null">
+      and article_id=#{id,jdbcType=BIGINT}
+    </if>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-22-->
+  <update id="updateArticleReadingById">
+    update user_article
+    set article_reading=article_reading+1
+    where 1=1
+    <if test="id != null">
+      and article_id=#{id,jdbcType=BIGINT}
+    </if>
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-24-->
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_article
+    where  article_update_date between #{from,jdbcType=TIMESTAMP} and #{to,jdbcType=TIMESTAMP}
+    and article_is_public=true and article_examine=1
+    order by article_publish_date desc
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-28-->
+  <select id="selectArticleAuthorId" resultType="java.lang.Long">
+    select article_author_id
+    from user_article
+    where  article_update_date between #{from,jdbcType=TIMESTAMP} and #{to,jdbcType=TIMESTAMP}
+    and article_is_public=true
+    order by article_publish_date desc
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-29-->
+  <select id="selectArticleAuthorIdById" resultType="java.lang.Long">
+        select article_author_id
+        from user_article
+        <where>
+            <if test="id != null">
+                and article_id=#{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-29-->
+  <select id="selectArticleCategoryIdById" resultType="java.lang.Long">
+    select article_category_id
+    from user_article
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-29-->
+  <select id="selectArticleTagsIdById" resultType="java.lang.String">
+    select article_tags_id
+    from user_article
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-29-->
+  <delete id="deleteById">
+    delete from user_article
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </delete>
+
+  <update id="updateSome">
+    update user_article
+    set
+    <if test="articleTitle!=null">article_title=#{articleTitle,jdbcType=VARCHAR},</if>
+    <if test="articleSummary!=null">article_summary=#{articleSummary,jdbcType=VARCHAR},</if>
+    <if test="articleMdContent!=null">article_md_content=#{articleMdContent,jdbcType=VARCHAR},</if>
+    <if test="articleTagsId!=null">article_tags_id=#{articleTagsId,jdbcType=VARCHAR},</if>
+    <if test="articleCategoryId!=null">article_category_id=#{articleCategoryId,jdbcType=VARCHAR},</if>
+    <if test="articleIsPublic!=null">article_is_public=#{articleIsPublic,jdbcType=BOOLEAN},</if>
+    <if test="articleIsPrivate!=null">article_is_private=#{articleIsPrivate,jdbcType=BOOLEAN},</if>
+    <if test="articleIsVip!=null">article_is_vip=#{articleIsVip,jdbcType=BOOLEAN},</if>
+    <if test="articleIsOriginal!=null">article_is_original=#{articleIsOriginal,jdbcType=BOOLEAN},</if>
+    <if test="articleIsForward!=null">article_is_forward=#{articleIsForward,jdbcType=BOOLEAN},</if>
+    <if test="articleIsTranslate!=null">article_is_translate=#{articleIsTranslate,jdbcType=BOOLEAN},</if>
+    <if test="articleForwardUrl!=null">article_forward_url=#{articleForwardUrl,jdbcType=VARCHAR},</if>
+    <if test="articleTranslateUrl!=null">article_translate_url=#{articleTranslateUrl,jdbcType=VARCHAR},</if>
+    <if test="articleUpdateDate!=null">article_update_date=#{articleUpdateDate,jdbcType=TIMESTAMP}</if>
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-02-29-->
+  <update id="updateArticleCategoryIdById">
+    update user_article
+    set article_category_id=#{updatedArticleCategoryId,jdbcType=BIGINT}
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-04-04-->
+  <update id="updateArticleThumbUpById">
+        update user_article
+        set article_thumb_up=#{updatedArticleThumbUp,jdbcType=INTEGER}
+        <where>
+            <if test="id != null">
+                and article_id=#{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-04-04-->
+  <select id="findAllById" resultType="com.article.response.ArticleRank">
+    select
+    article_id AS id,article_author_id AS authorId,
+    article_title AS title,article_publish_date AS createTime
+    from user_article
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+
+
+  <update id="updateArticleCollectionUpById">
+    update user_article
+    set article_collection=#{updatedArticleCollection,jdbcType=INTEGER}
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2020-05-26-->
+  <select id="selectArticleIsPrivateById" resultType="java.lang.Boolean">
+        select article_is_private
+        from user_article
+        <where>
+            <if test="id != null">
+                and article_id=#{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-05-27-->
+  <select id="selectAllByIdAndArticleAuthorId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_article
+        <where>
+            <if test="id != null">
+                and article_id=#{id,jdbcType=BIGINT}
+            </if>
+            <if test="articleAuthorId != null">
+                and article_author_id=#{articleAuthorId,jdbcType=BIGINT}
+            </if>
+        </where>
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-05-28-->
+  <update id="updateArticleExamineByid">
+    update user_article
+    set article_examine=#{updatedArticleExamine,jdbcType=BOOLEAN}
+    <where>
+      <if test="id != null">
+        and article_id=#{id,jdbcType=BIGINT}
+      </if>
+    </where>
+  </update>
+
+  <select id="selectAllByArticleAuthorIdAndTime" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user_article
+    where article_author_id=#{id,jdbcType=BIGINT}
+    and article_publish_date between #{from,jdbcType=TIMESTAMP} and #{to,jdbcType=TIMESTAMP}
+    and article_examine=1
+  </select>
+
+  <select id="selectUserAllById" resultMap="totalMap">
+    select  SUM(article_is_original) as originalTotal,SUM(article_thumb_up) as thumpTotal,
+            SUM(article_comment) as commentTotal,sum(article_reading) as readTotal
+    from user_article
+    where article_author_id=#{userId,jdbcType=BIGINT} and article_examine=1
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2020-06-01-->
+  <update id="updateArticleCommentById">
+        update user_article
+        set article_comment=article_comment+1
+        <where>
+            <if test="id != null">
+                and article_id=#{id,jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+</mapper>

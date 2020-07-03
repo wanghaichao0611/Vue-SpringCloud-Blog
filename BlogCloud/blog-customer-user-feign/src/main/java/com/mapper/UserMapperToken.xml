@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserMapperToken">
+  <resultMap id="BaseResultMap" type="com.Entity.User">
+    <!--@mbg.generated-->
+    <!--@Table user-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="Username" jdbcType="VARCHAR" property="username" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column=" CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="LastUpdate" jdbcType="TIMESTAMP" property="lastupdate" />
+  </resultMap>
+  <resultMap id="PhoneAndMemberMap" type="com.response.PhoneAndMember">
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="memberVip" jdbcType="VARCHAR" property="memberVip" />
+    <result column="memberSvip" jdbcType="VARCHAR" property="memberSvip" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, Username, `Password`, ` CreateTime`, LastUpdate
+  </sql>
+
+  <select id="getId"  resultType="long">
+    select id from user where Username=#{username,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectBlogName" resultType="java.lang.String">
+    select Blogname from user_if where Username=#{username,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectUrl" resultType="java.lang.String">
+    select Avatar_url from user_avatar where Avatar_id=#{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectPhoneAndMember" resultMap="PhoneAndMemberMap">
+    select Phone as phone,member_vip as memberVip,member_svip as memberSvip
+    from user_security,user_member
+    where user_id=member_id and user_id=#{id,jdbcType=BIGINT}
+  </select>
+
+</mapper>

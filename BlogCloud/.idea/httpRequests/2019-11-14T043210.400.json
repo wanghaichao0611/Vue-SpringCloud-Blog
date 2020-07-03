@@ -1,0 +1,8 @@
+{
+  "timestamp": 1573720330352,
+  "status": 400,
+  "error": "Bad Request",
+  "exception": "org.springframework.web.bind.MissingServletRequestParameterException",
+  "message": "Required String parameter 'newUsername' is not present",
+  "path": "/register"
+}
