@@ -1,4 +1,4 @@
-## 基于Vue+SpringCloud博客的设计与实现---WHC毕业前最后一次更新
+## 基于Vue+SpringCloud博客的设计与实现---毕业前最后一次更新
 博客采用Vue+SpringCloud前后分离的方式。博客采用了高可用Eureka（可以替换成Zookeeper）以及高可用Zuul，使用以Es搜索引擎作为Zpkin的存储方式去跟踪定位博客的微服务的Api指标，微服务之间负载均衡使用Feign接口，整个项目均写了回退不会发生级联效应。
 ***
 ## 项目的亮点
