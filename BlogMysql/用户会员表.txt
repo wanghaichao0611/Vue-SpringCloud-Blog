@@ -1,0 +1,16 @@
+create table user_member
+(
+    id                bigint auto_increment
+        primary key,
+    member_id         bigint                              not null,
+    member_vip        int       default 0                 not null,
+    member_svip       int       default 0                 not null,
+    rechargetime_vip  date                                null,
+    expiretime_vip    date                                null,
+    rechargetime_svip date                                null,
+    expiretime_svip   date                                null,
+    createtime        timestamp default CURRENT_TIMESTAMP not null,
+    updatetime        timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint member
+        foreign key (member_id) references user (id)
+);

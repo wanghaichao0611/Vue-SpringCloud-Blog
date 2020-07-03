@@ -1,0 +1,26 @@
+create table user_article
+(
+    article_id            bigint auto_increment
+        primary key,
+    article_author_id     bigint               not null,
+    article_title         varchar(255)         not null,
+    article_summary       varchar(255)         not null,
+    article_md_content    longtext             not null,
+    article_tags_id       varchar(255)         null,
+    article_category_id   bigint               not null,
+    article_reading       int        default 0 not null,
+    article_thumb_up      int        default 0 not null,
+    article_collection    int        default 0 not null,
+    article_forward       int        default 0 not null,
+    article_is_public     tinyint(1) default 0 not null,
+    article_is_private    tinyint(1) default 0 not null,
+    article_is_vip        tinyint(1) default 0 not null,
+    article_is_original   tinyint(1) default 0 not null,
+    article_is_forward    tinyint(1) default 0 not null,
+    article_is_translate  tinyint(1) default 0 not null,
+    article_forward_url   tinytext             null,
+    article_translate_url tinytext             null,
+    article_publish_date  datetime             not null,
+    article_update_date   datetime             not null
+);
+

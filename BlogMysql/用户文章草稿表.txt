@@ -1,0 +1,9 @@
+create table user_article_draft
+(
+    id            bigint auto_increment
+        primary key,
+    user_id       bigint       not null,
+    draft_title   varchar(255) not null,
+    draft_content longtext     not null,
+    draft_time    datetime     not null
+);

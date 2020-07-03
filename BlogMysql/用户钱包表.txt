@@ -1,0 +1,22 @@
+create table user_wallet
+(
+    id                 bigint auto_increment
+        primary key,
+    wallet_id          bigint                                   not null,
+    bankcard_one       varchar(20)                              null,
+    bankcard_oneSign   int(20)        default 0                 not null,
+    bankcardname_one   varchar(20)                              null,
+    bankcard_two       varchar(20)                              null,
+    bankcard_twoSign   int(20)        default 0                 not null,
+    bankcardname_two   varchar(20)                              null,
+    bankcard_three     varchar(20)                              null,
+    bankcard_threeSign int(20)        default 0                 not null,
+    bankcardname_three varchar(20)                              null,
+    wallet_money       decimal(10, 2) default 0.00              not null,
+    wallet_password    varchar(6)                               null,
+    realname           varchar(20)                              null,
+    createtime         timestamp      default CURRENT_TIMESTAMP not null,
+    updatetime         timestamp      default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint walletid
+        foreign key (wallet_id) references user (id)
+);

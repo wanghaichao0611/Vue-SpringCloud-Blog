@@ -1,0 +1,11 @@
+create table user_article_img
+(
+    id                 bigint auto_increment
+        primary key,
+    article_author__id bigint       not null,
+    username           varchar(255) not null,
+    blogImg_name       varchar(255) not null,
+    blogImg_url        varchar(255) not null,
+    blogImgCreateTime  datetime     not null
+);
+

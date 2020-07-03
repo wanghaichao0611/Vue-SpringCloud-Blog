@@ -1,0 +1,14 @@
+create table user_article_comment
+(
+    comment_id            bigint auto_increment
+        primary key,
+    comment_article_id    bigint default -1 not null,
+    comment_total         int    default 0  not null,
+    commentator_id        bigint            not null,
+    comment_content       text              not null,
+    comment_date          datetime          not null,
+    comment_parent_id     bigint default -1 not null,
+    comment_response_id   tinytext          null,
+    comment_response_date text              null
+);
+

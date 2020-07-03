@@ -1,0 +1,17 @@
+create table user_security
+(
+    id           bigint auto_increment
+        primary key,
+    Username     varchar(50)                         not null,
+    Email        varchar(50)                         null,
+    Phone        varchar(50)                         null,
+    RealName     varchar(20)                         null,
+    CardNumber   varchar(30)                         null,
+    SchoolNumber varchar(20)                         null,
+    School       varchar(50)                         null,
+    CreateTime   timestamp default CURRENT_TIMESTAMP not null,
+    UpdateTime   timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint SnamaAQ
+        foreign key (Username) references user (Username)
+);
+

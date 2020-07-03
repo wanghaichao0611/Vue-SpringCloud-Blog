@@ -1,0 +1,18 @@
+create table user_continuereward
+(
+    id                   bigint auto_increment
+        primary key,
+    continue_id          bigint                              not null,
+    continueReward_one   int(20)                             null,
+    continueReward_two   int(20)                             null,
+    continueReward_three int(20)                             null,
+    continueReward_four  int(20)                             null,
+    continueReward_five  int(20)                             null,
+    continueReward_six   int(20)                             null,
+    continueReward_seven int(20)                             null,
+    firstTime            timestamp default CURRENT_TIMESTAMP not null,
+    lastTime             timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint continueReward
+        foreign key (continue_id) references user_sign (id)
+);
+

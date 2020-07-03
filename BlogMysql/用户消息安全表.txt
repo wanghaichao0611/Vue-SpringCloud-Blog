@@ -1,0 +1,15 @@
+create table user_msg_security
+(
+    id            bigint auto_increment
+        primary key,
+    user_id       bigint        not null,
+    msg_on        int default 2 null,
+    commentMsg_on int default 2 null,
+    atMsg_on      int default 2 null,
+    thumpMsg_on   int default 2 null,
+    leaveMsg_on   int default 2 null,
+    behavior_on   int default 2 null,
+    comment_on    int default 2 null,
+    leave_on      int default 2 null,
+    forward_on    int default 2 null
+);

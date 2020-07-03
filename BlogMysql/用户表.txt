@@ -1,0 +1,58 @@
+create table user
+(
+    id            bigint auto_increment
+        primary key,
+    Username      varchar(255)                        not null,
+    Password      varchar(255)                        not null,
+    ` CreateTime` timestamp default CURRENT_TIMESTAMP not null comment 'createTime',
+    LastUpdate    timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment 'UpdateTime'
+);
+
+create index Sname
+    on user (Username);
+
+create definer = root@localhost trigger avatar
+    after insert
+    on user
+    for each row
+begin
+    insert into user_avatar (Avatar_id, Username)
+    values (new.id, new.Username);
+end;
+
+create definer = root@localhost trigger member
+    after insert
+    on user
+    for each row
+begin
+    insert into user_member (member_id)
+    values (new.id);
+end;
+
+create definer = root@localhost trigger security_trigger
+    after insert
+    on user
+    for each row
+begin
+    insert into user_security (Username)
+    values (new.Username);
+end;
+
+create definer = root@localhost trigger sign
+    after insert
+    on user
+    for each row
+begin
+    insert into user_sign (Sign_id)
+    values (new.id);
+end;
+
+create definer = root@localhost trigger wallet
+    after insert
+    on user
+    for each row
+begin
+    insert into user_wallet (wallet_id)
+    values (new.id);
+end;
+

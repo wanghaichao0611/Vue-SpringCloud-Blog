@@ -1,0 +1,19 @@
+create table user_order
+(
+    id             bigint auto_increment
+        primary key,
+    order_id       bigint                                 not null,
+    app_id         varchar(32) default '2016101500688517' null,
+    out_trade_no   varchar(255)                           null,
+    total_amount   decimal(10, 2)                         null,
+    receipt_amount decimal(10, 2)                         null,
+    subject        varchar(255)                           null,
+    body           varchar(255)                           null,
+    store_id       varchar(255)                           null,
+    fundChannel    varchar(255)                           null,
+    tradeStatus    varchar(255)                           null,
+    createTime     datetime                               not null,
+    endTime        datetime                               null,
+    constraint `order`
+        foreign key (order_id) references user (id)
+);

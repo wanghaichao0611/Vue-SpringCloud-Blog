@@ -1,0 +1,11 @@
+create table user_msg_thump
+(
+    id            bigint auto_increment
+        primary key,
+    thump_id      bigint               not null,
+    thumpTo_id    bigint               not null,
+    article_id    bigint               not null,
+    article_title varchar(255)         not null,
+    thumpMsg_on   tinyint(1) default 0 not null,
+    createtime    datetime             not null
+);

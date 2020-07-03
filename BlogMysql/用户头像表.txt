@@ -1,0 +1,16 @@
+create table user_avatar
+(
+    id               bigint auto_increment
+        primary key,
+    Avatar_id        bigint                              not null,
+    Username         varchar(50)                         not null,
+    Avatar_name      varchar(255)                        null,
+    Avatar_url       varchar(255)                        null,
+    AvatarCreateTime timestamp default CURRENT_TIMESTAMP not null,
+    AvatarUpdateTime timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint avatar
+        foreign key (Username) references user (Username),
+    constraint avatar_id
+        foreign key (Avatar_id) references user (id)
+);
+

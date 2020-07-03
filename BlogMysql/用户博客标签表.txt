@@ -1,0 +1,7 @@
+create table user_article_tag
+(
+    tag_id       bigint auto_increment
+        primary key,
+    tag_name     varchar(255) not null,
+    tag_articles text         null
+);

@@ -1,0 +1,13 @@
+create table user_coupon
+(
+    id             bigint auto_increment
+        primary key,
+    order_id       bigint               not null,
+    user_id        bigint               not null,
+    coupon_name    varchar(255)         not null,
+    coupon_money   decimal(10, 2)       not null,
+    coupon_on      tinyint(1) default 0 not null,
+    coupon_subject varchar(255)         not null,
+    createTime     datetime             not null,
+    costTime       datetime             null
+);

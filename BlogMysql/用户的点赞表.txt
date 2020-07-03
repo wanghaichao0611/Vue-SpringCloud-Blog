@@ -1,0 +1,12 @@
+create table user_article_thump
+(
+    id           bigint auto_increment
+        primary key,
+    blog_id      bigint        not null,
+    user_id      bigint        not null,
+    thump_time   datetime      null,
+    thump_status int default 1 not null,
+    thump_active int default 1 not null,
+    create_time  datetime      null,
+    update_time  timestamp     null on update CURRENT_TIMESTAMP
+);

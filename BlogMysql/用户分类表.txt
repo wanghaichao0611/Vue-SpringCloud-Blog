@@ -1,0 +1,8 @@
+create table user_article_category
+(
+    category_id       bigint auto_increment
+        primary key,
+    category_name     varchar(255) not null,
+    category_articles text         not null
+);
+

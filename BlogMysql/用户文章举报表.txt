@@ -1,0 +1,10 @@
+create table user_report
+(
+    id        bigint               not null
+        primary key,
+    type      varchar(255)         not null,
+    reason    text                 not null,
+    result    tinyint(1) default 0 not null,
+    creattime datetime             not null,
+    dealtime  datetime             null
+);

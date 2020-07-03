@@ -1,0 +1,11 @@
+create table user_sign_article
+(
+    id           bigint auto_increment
+        primary key,
+    user_id      bigint                              not null,
+    sign_article int       default 0                 null,
+    sign_thump   int       default 0                 null,
+    sign_comment int       default 0                 null,
+    create_time  datetime                            not null,
+    update_time  timestamp default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP
+);

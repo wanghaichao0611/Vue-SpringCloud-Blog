@@ -1,0 +1,18 @@
+create table user_totalreward
+(
+    id          bigint auto_increment
+        primary key,
+    total_id    bigint                              not null,
+    total_one   int                                 null,
+    total_two   int                                 null,
+    total_three int                                 null,
+    total_four  int                                 null,
+    total_five  int                                 null,
+    total_six   int                                 null,
+    total_seven int                                 null,
+    firstTime   timestamp default CURRENT_TIMESTAMP not null,
+    lastTime    timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint totalid
+        foreign key (total_id) references user_sign (id)
+);
+

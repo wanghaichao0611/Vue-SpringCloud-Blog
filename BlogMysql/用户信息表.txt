@@ -1,0 +1,17 @@
+create table user_if
+(
+    id         bigint auto_increment
+        primary key,
+    If_id      bigint                              not null,
+    Username   varchar(50)                         not null,
+    Blogname   varchar(50)                         null,
+    Birth      varchar(50)                         null,
+    Sex        varchar(20)                         null,
+    Job        varchar(20)                         null,
+    Introduce  varchar(50)                         null,
+    CreateTime timestamp default CURRENT_TIMESTAMP not null,
+    UpdateTime timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP,
+    constraint SnameC
+        foreign key (Username) references user (Username)
+);
+
