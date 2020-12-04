@@ -16,7 +16,7 @@
     "element-ui": "^2.12.0",
     "font-awesome": "^4.7.0",
     "github-markdown-css": "^4.0.0",
-    "highlight.js": "^9.18.1",
+    "highlight.js": "^10.4.1",
     "jquery": "^3.4.1",
     "marked": "^0.8.0",
     "mavon-editor": "^2.7.7",
